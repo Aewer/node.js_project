@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+
+<nav>
+    <h4>Node.js Postgres login</h4>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+    </ul>
+</nav>
+
+<h1>Register</h1>
+<form action="/auth/register" method="post">
+    <label for="regUsername">Username:</label>
+    <input type="text" id="regUsername" name="name" required>
+    <br>
+    <label for="regPassword">Password:</label>
+    <input type="password" id="regPassword" name="password" required>
+    <br>
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>
