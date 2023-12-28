@@ -55,6 +55,7 @@ app.post("/auth/register", async (req, res) => {
         }
 
         let hashedPassword = await bcrypt.hash(password, 8);
+
         client.query('INSERT INTO users (name, password) VALUES ($1, $2)', [name, hashedPassword], (err) => {
             if (err) {
                 console.log(err);
