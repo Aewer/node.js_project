@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const { Client } = require('pg');
-const bcrypt = require("bcryptjs")
+const { Client } = require("pg");
+const bcrypt = require("bcryptjs");
 
 const app = express();
 
@@ -37,18 +37,18 @@ app.get("/login", (req, res) => {
     res.render("login", {loginMessage: ''});
 })
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded());
 app.use(express.json());
 
 app.post("/auth/register", async (req, res) => {
     const { name, password } = req.body;
 
+    if (password.length < 8) {
+        return res.render('register', { registerMessage: 'Password is too short' });
+    }
+
     try {
         const result = await client.query('SELECT * FROM users WHERE name = $1', [name]);
-
-        if (password.length < 8) {
-            return res.render('register', { registerMessage: 'Password is too short' });
-        }
 
         if (result.rows.length > 0) {
             return res.render('register', { registerMessage: 'Name is already in use' });
