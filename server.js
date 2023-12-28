@@ -84,7 +84,7 @@ app.post("/auth/login", async (req, res) => {
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch) {
-            return res.render('login', { loginMessage: 'Invalid password' });
+            return res.render('login', { loginMessage: 'Wrong password' });
         }
 
         return res.render('login', { loginMessage: 'Login successful' });
